@@ -27,7 +27,7 @@ export function TaskList() {
       setIdsArray(oldIds => [...oldIds, newId])
       console.log(idsArray)
       const newTask = {
-        id: getRandom(1, 50),
+        id: newId,
         title: newTaskTitle,
         isComplete: false,
       }
@@ -48,8 +48,11 @@ export function TaskList() {
   }
 
   function handleRemoveTask(id: number) {
-    const filteredTasks = tasks.filter(task => { task.id !== id })
+    const filteredTasks = tasks.filter(task => task.id !== id)
     setTasks(filteredTasks)
+
+    const filteredIdsArray = idsArray.filter(idArray => idArray !== id)
+    setIdsArray(filteredIdsArray)
   }
 
   return (
