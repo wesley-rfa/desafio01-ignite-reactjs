@@ -15,3 +15,8 @@ Para isso foi proposto a implementação de 3 funções para permitir a criaçã
 **2** - Marcar e desmarcar tasks
     
 **3** - Excluir tasks
+
+## Exemplos
+
+
+![](public/ex1.png)
