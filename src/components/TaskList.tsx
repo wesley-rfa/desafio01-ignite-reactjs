@@ -10,31 +10,19 @@ interface Task {
 export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
-  const [idsArray, setIdsArray] = useState<number[]>([]);
-
-  function getRandom(min: number, max: number) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
 
   function handleCreateNewTask() {
-
     if (!newTaskTitle) return
-    let newId = getRandom(1, 100)
 
-    if (!idsArray.includes(newId)) {
-      setIdsArray(oldIds => [...oldIds, newId])
-      console.log(idsArray)
-      const newTask = {
-        id: newId,
-        title: newTaskTitle,
-        isComplete: false,
-      }
-
-      setTasks(oldTask => [...oldTask, newTask])
-      setNewTaskTitle('')
+    const newTask = {
+      id: Math.random(),
+      title: newTaskTitle,
+      isComplete: false,
     }
+
+    setTasks(oldTask => [...oldTask, newTask])
+    setNewTaskTitle('')
+
 
   }
 
@@ -50,9 +38,6 @@ export function TaskList() {
   function handleRemoveTask(id: number) {
     const filteredTasks = tasks.filter(task => task.id !== id)
     setTasks(filteredTasks)
-
-    const filteredIdsArray = idsArray.filter(idArray => idArray !== id)
-    setIdsArray(filteredIdsArray)
   }
 
   return (
